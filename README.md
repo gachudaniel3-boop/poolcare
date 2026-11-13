@@ -12,7 +12,7 @@ npm.cmd start
 
 `npm run build` generates the local minified Tailwind stylesheet. The generated `assets/css/tailwind.css` is served directly and does not require Tailwind at runtime.
 
-Open `http://localhost:5000` for the public site or `http://localhost:5000/admin.html` for the Admin Portal. The root `index.html` forwards to the existing `poolcare_contractors_website.html` page. The server seeds each missing MongoDB content record with built-in defaults; it never replaces existing database content at startup. Projects, services, reviews, products, estimator settings, plans, and branding are stored in MongoDB. Images and videos uploaded in the Admin Portal are stored in Cloudinary, and their URLs are saved in MongoDB.
+Open `http://localhost:5000` for the public site or `http://localhost:5000/admin.html` for the Admin Portal. The root `index.html` forwards to the public site, where `PICTURES/p-assets/download.mp4` plays as a preloader while the page initializes. The server seeds each missing MongoDB content record with built-in defaults; it never replaces existing database content at startup. Projects, services, reviews, products, estimator settings, plans, and branding are stored in MongoDB. Images and videos uploaded in the Admin Portal are stored in Cloudinary, and their URLs are saved in MongoDB.
 
 Keep `.env` out of version control. The Express server—not browser JavaScript—reads `ADMIN_PASSWORD`, `MONGODB_URI`, and Cloudinary credentials. The Cloudinary API secret is used only by the server. Never add secrets to `assets/js` or a frontend environment bundle.
 

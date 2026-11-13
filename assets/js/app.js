@@ -46,11 +46,11 @@
         let activeServiceFilter = 'all';
 
         function updateThemeToggle(theme) {
-            const button = document.getElementById('themeToggle');
-            if (!button) return;
             const label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-            button.setAttribute('aria-label', label);
-            button.title = label;
+            document.querySelectorAll('#themeToggle, #mobileThemeToggle').forEach(button => {
+                button.setAttribute('aria-label', label);
+                button.title = label;
+            });
         }
 
         function applyTheme(theme) {
@@ -63,14 +63,60 @@
             }
         }
 
+        function initSitePreloader() {
+            const preloader = document.getElementById('sitePreloader');
+            if (!preloader) return;
+
+            const video = preloader.querySelector('video');
+            const startedAt = Date.now();
+            const siteReady = new Promise(resolve => {
+                if (document.documentElement.dataset.siteReady === 'true') {
+                    resolve();
+                    return;
+                }
+                window.addEventListener('poolcare:ready', resolve, { once: true });
+                window.setTimeout(resolve, 7000);
+            });
+            const videoFinished = new Promise(resolve => {
+                if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    resolve();
+                    return;
+                }
+
+                let finished = false;
+                const finish = () => {
+                    if (finished) return;
+                    finished = true;
+                    resolve();
+                };
+                video.addEventListener('ended', finish, { once: true });
+                video.addEventListener('error', finish, { once: true });
+                window.setTimeout(finish, 4500);
+                const playback = video.play();
+                if (playback && typeof playback.catch === 'function') playback.catch(finish);
+            });
+
+            Promise.all([siteReady, videoFinished]).then(() => {
+                window.setTimeout(() => {
+                    preloader.classList.add('is-hidden');
+                    preloader.addEventListener('transitionend', event => {
+                        if (event.target === preloader && event.propertyName === 'opacity') {
+                            preloader.remove();
+                        }
+                    }, { once: true });
+                    window.setTimeout(() => preloader.remove(), 700);
+                }, Math.max(0, 700 - (Date.now() - startedAt)));
+            });
+        }
+
         function initThemeToggle() {
-            const button = document.getElementById('themeToggle');
-            if (!button) return;
+            const buttons = Array.from(document.querySelectorAll('#themeToggle, #mobileThemeToggle'));
+            if (!buttons.length) return;
 
             updateThemeToggle(document.documentElement.dataset.theme || 'dark');
-            button.addEventListener('click', () => {
+            buttons.forEach(button => button.addEventListener('click', event => {
                 const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-                const bounds = button.getBoundingClientRect();
+                const bounds = event.currentTarget.getBoundingClientRect();
                 const x = bounds.left + bounds.width / 2;
                 const y = bounds.top + bounds.height / 2;
                 document.documentElement.style.setProperty('--theme-x', `${x}px`);
@@ -96,9 +142,10 @@
                         fallback.onanimationend = null;
                     }
                 };
-            });
+            }));
         }
 
+        initSitePreloader();
         initThemeToggle();
 
         function escapeHtml(value) {
@@ -134,22 +181,24 @@
             const toggle = document.getElementById('mobileMenuToggle');
             const drawer = document.getElementById('mobileNavDrawer');
             if (!toggle || !drawer) return;
-            let menuOpenTimer = null;
+            let menuCloseTimer = null;
 
             const closeMenu = () => {
                 if (toggle.getAttribute('aria-expanded') !== 'true') return;
-                window.clearTimeout(menuOpenTimer);
+                window.clearTimeout(menuCloseTimer);
                 toggle.setAttribute('aria-expanded', 'false');
                 toggle.setAttribute('aria-label', 'Open navigation menu');
                 drawer.classList.remove('is-open');
-                window.setTimeout(() => {
+                menuCloseTimer = window.setTimeout(() => {
                     if (!drawer.classList.contains('is-open')) drawer.hidden = true;
                 }, 220);
             };
             const openMenu = () => {
-                window.clearTimeout(menuOpenTimer);
+                window.clearTimeout(menuCloseTimer);
                 drawer.hidden = false;
-                menuOpenTimer = window.setTimeout(() => drawer.classList.add('is-open'), 20);
+                drawer.classList.remove('is-open');
+                void drawer.offsetHeight;
+                drawer.classList.add('is-open');
                 toggle.setAttribute('aria-expanded', 'true');
                 toggle.setAttribute('aria-label', 'Close navigation menu');
             };
@@ -232,6 +281,8 @@
 
             // Start Animation Loop
             requestAnimationFrame(animateConveyorLoop);
+            document.documentElement.dataset.siteReady = 'true';
+            window.dispatchEvent(new Event('poolcare:ready'));
         }
 
         if (document.readyState === 'loading') {
@@ -277,6 +328,7 @@
                 }
             });
             stage.addEventListener('wheel', (event) => {
+                if (window.matchMedia('(max-width: 768px)').matches) return;
                 if (Math.abs(event.deltaY) > 12) { event.preventDefault(); change(event.deltaY > 0 ? 1 : -1); }
             }, { passive: false });
             window.addEventListener('resize', () => {
@@ -284,11 +336,19 @@
                 updateOrbitCarousel(false);
                 clearTimeout(stage.orbitResizeTimer);
                 stage.orbitResizeTimer = setTimeout(() => stage.classList.remove('is-resizing'), 120);
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    clearInterval(orbitInterval);
+                    orbitInterval = null;
+                } else if (!orbitInterval) {
+                    orbitInterval = setInterval(() => change(1), 5200);
+                }
             });
             stage.classList.add('is-resizing');
             updateOrbitCarousel(false);
             requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.remove('is-resizing')));
-            orbitInterval = setInterval(() => change(1), 5200);
+            if (!window.matchMedia('(max-width: 768px)').matches) {
+                orbitInterval = setInterval(() => change(1), 5200);
+            }
         }
 
         function updateOrbitCarousel(animate = true) {
@@ -296,6 +356,21 @@
             const counter = document.getElementById('orbitCounter');
             if (!stage || !orbitCards.length) return;
             const mobile = window.matchMedia('(max-width: 768px)').matches;
+            if (counter) counter.textContent = `${orbitIndex + 1} / ${orbitCards.length}`;
+            if (mobile) {
+                orbitCards.forEach((card, index) => {
+                    const active = index === orbitIndex;
+                    card.classList.toggle('is-active', active);
+                    card.setAttribute('aria-pressed', active ? 'true' : 'false');
+                    card.style.opacity = '1';
+                    card.style.zIndex = 'auto';
+                    card.style.pointerEvents = 'auto';
+                    ['left', 'top', 'transform', 'width', 'min-height', 'padding'].forEach(property => {
+                        card.style.removeProperty(property);
+                    });
+                });
+                return;
+            }
             const desktopWide = window.matchMedia('(min-width: 1200px)').matches;
             const carousel = document.getElementById('orbitCarousel');
             const radius = parseFloat(getComputedStyle(stage.querySelector('.orbit-track')).width) / 2 || (mobile ? 170 : 270);
@@ -308,7 +383,6 @@
             const centerX = mobile ? stage.clientWidth / 2 : stage.clientWidth + edgeGap;
             const centerY = mobile ? stage.clientHeight - radius : stage.clientHeight / 2;
             const angles = mobile ? [270, 310, 330, 230] : [180, 220, 250, 140];
-            if (counter) counter.textContent = `${orbitIndex + 1} / ${orbitCards.length}`;
             const moves = orbitCards.map((card, i) => {
                 const offset = (i - orbitIndex + orbitCards.length) % orbitCards.length;
                 const angle = angles[offset];
