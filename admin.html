@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Portal | Poolcare Contractors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+    <main class="admin-page">
+        <section id="adminLogin" class="auth-card" aria-labelledby="loginTitle">
+            <a href="index.html" class="auth-brand">
+                <img src="PICTURES/p-assets/flogo.png" alt="" width="48" height="48">
+                <span>Poolcare <small>Admin Portal</small></span>
+            </a>
+            <div class="auth-heading">
+                <span class="eyebrow">SECURE ACCESS</span>
+                <h1 id="loginTitle">Sign in to your dashboard</h1>
+                <p id="authDescription">Sign in with the administrator password configured on the server.</p>
+            </div>
+            <form id="adminLoginForm" class="admin-form">
+                <label for="adminPassword">Admin password</label>
+                <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+                <button class="primary-button" type="submit"><i class="fa-solid fa-lock"></i> Sign in</button>
+            </form>
+            <p id="authMessage" class="form-message" role="status" aria-live="polite"></p>
+            <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Return to website</a>
+        </section>
+
+        <section id="adminDashboard" class="dashboard" hidden>
+            <aside class="admin-sidebar">
+                <a href="poolcare_contractors_website.html" class="sidebar-brand">
+                    <img src="PICTURES/p-assets/flogo.png" alt="" width="42" height="42">
+                    <span>Poolcare<small>ADMIN</small></span>
+                </a>
+                <div class="sidebar-label">CONTENT</div>
+                <nav class="admin-tabs" aria-label="Dashboard sections">
+                    <button class="admin-tab is-active" data-tab="branding"><i class="fa-solid fa-image"></i><span>Website Logo</span></button>
+                    <button class="admin-tab" data-tab="projects"><i class="fa-solid fa-water"></i><span>Projects</span></button>
+                    <button class="admin-tab" data-tab="services"><i class="fa-solid fa-screwdriver-wrench"></i><span>Services</span></button>
+                    <button class="admin-tab" data-tab="reviews"><i class="fa-solid fa-star"></i><span>Reviews</span><span id="pendingBadge" class="count-badge">0</span></button>
+                    <button class="admin-tab" data-tab="products"><i class="fa-solid fa-box-open"></i><span>Store Items</span></button>
+                    <button class="admin-tab" data-tab="estimator"><i class="fa-solid fa-calculator"></i><span>Estimator</span></button>
+                    <button class="admin-tab" data-tab="plans"><i class="fa-solid fa-calendar-check"></i><span>Maintenance Plans</span></button>
+                </nav>
+                <div class="sidebar-bottom">
+                    <span id="connectionMode" class="mode-badge"><i class="fa-solid fa-circle"></i> Secure API</span>
+                    <a href="poolcare_contractors_website.html" class="sidebar-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View website</a>
+                    <button id="logoutButton" class="logout-button"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+                </div>
+            </aside>
+
+            <div class="dashboard-main">
+                <header class="dashboard-header">
+                    <div>
+                        <span class="eyebrow">POOLCARE CONTRACTORS</span>
+                        <h1 id="dashboardTitle">Website Logo</h1>
+                    </div>
+                    <a href="poolcare_contractors_website.html" class="view-site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View website</a>
+                </header>
+                <div id="adminNotice" class="admin-notice" role="status" aria-live="polite"></div>
+                <div class="dashboard-panels">
+                    <section class="admin-panel is-active" data-panel="branding">
+                        <div class="panel-intro"><h2>Website identity</h2><p>Change the logo image and brand name shown across the website.</p></div>
+                        <div class="content-card">
+                            <div class="logo-preview"><img id="logoPreview" src="PICTURES/p-assets/flogo.png" alt="Logo preview"><span id="brandPreview">Poolcare<br><small>Contractors</small></span></div>
+                            <form id="brandingForm" class="admin-form">
+                                <label for="logoFile">Upload logo image</label>
+                                <input id="logoFile" type="file" accept="image/*">
+                                <label for="logoUrl">Or use a logo URL</label>
+                                <input id="logoUrl" type="url" placeholder="https://example.com/logo.png">
+                                <div class="form-grid">
+                                    <div><label for="brandName">Brand name</label><input id="brandName" maxlength="60" required></div>
+                                    <div><label for="brandSubtitle">Brand subtitle</label><input id="brandSubtitle" maxlength="60"></div>
+                                </div>
+                                <button class="primary-button" type="submit">Save website identity</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="admin-panel" data-panel="projects">
+                        <div class="panel-intro"><h2>Project cards</h2><p>Projects appear in the animated conveyor and open in desktop and mobile detail views.</p></div>
+                        <div class="content-card">
+                            <h3>Add project</h3>
+                            <form id="projectForm" class="admin-form">
+                                <div class="form-grid">
+                                    <div><label for="projectName">Project name</label><input id="projectName" maxlength="120" required></div>
+                                    <div><label for="projectLocation">Location</label><input id="projectLocation" maxlength="120" required></div>
+                                    <div><label for="projectType">Service type</label><input id="projectType" maxlength="100" required></div>
+                                    <div><label for="projectDuration">Duration (optional)</label><input id="projectDuration" maxlength="60" placeholder="e.g. 3 weeks"></div>
+                                </div>
+                                <label for="projectMediaFile">Upload picture or video (2 MB max in browser demo)</label>
+                                <input id="projectMediaFile" type="file" accept="image/*,video/*">
+                                <label for="projectMediaUrl">Or paste a media URL</label>
+                                <input id="projectMediaUrl" type="url" placeholder="https://...">
+                                <label for="projectDescription">More info about the project</label>
+                                <textarea id="projectDescription" rows="4" maxlength="2000" required></textarea>
+                                <button class="primary-button" type="submit">Add project</button>
+                            </form>
+                        </div>
+                        <div id="projectList" class="item-list"></div>
+                    </section>
+
+                    <section class="admin-panel" data-panel="services">
+                        <div class="panel-intro"><h2>Service cards</h2><p>Manage the service catalog and the public 5 + 1 expandable services grid.</p></div>
+                        <div class="content-card">
+                            <h3>Add service</h3>
+                            <form id="serviceForm" class="admin-form">
+                                <label for="serviceName">Service name</label>
+                                <input id="serviceName" maxlength="120" required>
+                                <label for="serviceDescription">What this service provides</label>
+                                <textarea id="serviceDescription" rows="3" maxlength="500" required></textarea>
+                                <label for="serviceCategory">Category</label>
+                                <select id="serviceCategory"><option value="construction">Construction & Design</option><option value="repairs">Repairs & Resurfacing</option><option value="maintenance">Maintenance & Water Care</option><option value="spas">Spas & Water Features</option></select>
+                                <button class="primary-button" type="submit">Add service</button>
+                            </form>
+                        </div>
+                        <div id="serviceList" class="item-list"></div>
+                    </section>
+
+                    <section class="admin-panel" data-panel="reviews">
+                        <div class="panel-intro"><h2>Reviews & moderation</h2><p>Approve visitor submissions before they appear publicly, or add and remove reviews.</p></div>
+                        <div class="content-card">
+                            <h3>Add an approved review</h3>
+                            <form id="reviewForm" class="admin-form">
+                                <div class="form-grid">
+                                    <div><label for="reviewName">Name</label><input id="reviewName" maxlength="80" required></div>
+                                    <div><label for="reviewLocation">Location</label><input id="reviewLocation" maxlength="120" required></div>
+                                </div>
+                                <label for="reviewRating">Rating</label>
+                                <select id="reviewRating"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select>
+                                <label for="reviewComment">Review text</label>
+                                <textarea id="reviewComment" rows="3" maxlength="1200" required></textarea>
+                                <button class="primary-button" type="submit">Publish review</button>
+                            </form>
+                        </div>
+                        <div id="reviewList" class="item-list"></div>
+                    </section>
+
+                    <section class="admin-panel" data-panel="products">
+                        <div class="panel-intro"><h2>Pool store</h2><p>Manage items displayed in the Client Hub store.</p></div>
+                        <div class="content-card">
+                            <h3>Add store item</h3>
+                            <form id="productForm" class="admin-form">
+                                <label for="productName">Item name</label><input id="productName" maxlength="120" required>
+                                <label for="productDescription">Item description</label><textarea id="productDescription" rows="3" maxlength="600" required></textarea>
+                                <div class="form-grid">
+                                    <div><label for="productPrice">Price (KES)</label><input id="productPrice" type="number" min="0" step="1" required></div>
+                                    <div><label for="productMediaFile">Item picture (optional)</label><input id="productMediaFile" type="file" accept="image/*"></div>
+                                </div>
+                                <label for="productMediaUrl">Or paste a picture URL</label><input id="productMediaUrl" type="url" placeholder="https://...">
+                                <button class="primary-button" type="submit">Add item</button>
+                            </form>
+                        </div>
+                        <div id="productList" class="item-list"></div>
+                    </section>
+
+                    <section class="admin-panel" data-panel="estimator">
+                        <div class="panel-intro"><h2>Estimator values</h2><p>These rates feed the public construction and chemical cost estimators.</p></div>
+                        <form id="estimatorForm" class="content-card admin-form">
+                            <h3>Construction base rates (KES per m²)</h3>
+                            <div id="buildRateFields" class="rate-fields"></div>
+                            <h3>Add-ons & chemical prices (KES)</h3>
+                            <div class="form-grid">
+                                <div><label for="tilingAddon">Tiling add-on per m²</label><input id="tilingAddon" type="number" min="0" step="1" required></div>
+                                <div><label for="filtrationAddon">Filtration add-on per m²</label><input id="filtrationAddon" type="number" min="0" step="1" required></div>
+                                <div><label for="chlorinePrice">Dry chlorine per kg</label><input id="chlorinePrice" type="number" min="0" step="1" required></div>
+                                <div><label for="phReducerPrice">pH reducer per kg</label><input id="phReducerPrice" type="number" min="0" step="1" required></div>
+                                <div><label for="algaecidePrice">Algaecide per liter</label><input id="algaecidePrice" type="number" min="0" step="1" required></div>
+                            </div>
+                            <button class="primary-button" type="submit">Save estimator values</button>
+                        </form>
+                    </section>
+
+                    <section class="admin-panel" data-panel="plans">
+                        <div class="panel-intro"><h2>Monthly maintenance plans</h2><p>Update plan names, pricing, visit frequency, and included services.</p></div>
+                        <div id="planForms" class="plan-forms"></div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f9fc">
+    <title>Poolcare Contractors | Swimming Pool Construction & Maintenance Ruiru, Kenya</title>
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('poolcare-theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                document.documentElement.dataset.theme = savedTheme;
+            }
+        } catch (error) {
+            console.warn('Theme preference could not be loaded.', error);
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="selection:bg-brand-cyan selection:text-brand-navy">
+
+    <svg class="wave-gradient-defs" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="waveGradBack" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0077B6" stop-opacity="0.25"></stop>
+                <stop offset="100%" stop-color="#003B5C" stop-opacity="0.38"></stop>
+            </linearGradient>
+            <linearGradient id="waveGradMid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#48CAE4" stop-opacity="0.22"></stop>
+                <stop offset="100%" stop-color="#0077B6" stop-opacity="0.3"></stop>
+            </linearGradient>
+            <linearGradient id="waveGradFront" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#90E0EF" stop-opacity="0.18"></stop>
+                <stop offset="100%" stop-color="#48CAE4" stop-opacity="0.26"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- MAIN SITE CONTAINER (Hidden when mobile full page view is active) -->
+    <div id="mainSiteContainer">
+
+        <!-- HEADER & NAVIGATION -->
+        <header class="sticky top-0 z-40 bg-brand-navy/90 backdrop-blur-md border-b border-white/10 transition-all">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <img src="PICTURES/p-assets/flogo.png" data-brand-logo alt="Poolcare Contractors logo" class="w-14 h-14 rounded-xl object-contain bg-white group-hover:scale-105 transition-transform">
+                    <div>
+                        <span data-brand-name class="text-xl font-extrabold tracking-tight text-white block leading-none">Poolcare</span>
+                        <span data-brand-subtitle class="text-xs font-semibold text-brand-cyan uppercase tracking-widest block mt-1">Contractors</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav id="desktopNav" class="desktop-nav hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#hero" class="hover:text-brand-cyan transition-colors">Home</a>
+                    <a href="#projects" class="hover:text-brand-cyan transition-colors">Projects</a>
+                    <a href="#services" class="hover:text-brand-cyan transition-colors">Services</a>
+                    <a href="#about" class="hover:text-brand-cyan transition-colors">About Us</a>
+                    <a href="#reviews" class="hover:text-brand-cyan transition-colors">Reviews</a>
+                    <a href="#tools" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5 text-brand-teal">
+                        <i class="fa-solid fa-wrench text-xs"></i> Client Hub
+                    </a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="desktop-actions flex items-center gap-3">
+                    <a href="tel:0745410748" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition">
+                        <i class="fa-solid fa-phone text-brand-teal"></i> 0745 410748
+                    </a>
+                    <a href="#tools" onclick="setActiveToolTab('quote')" class="px-4 py-2.5 rounded-lg bg-gradient-to-r from-brand-cyan to-brand-teal text-brand-navy font-bold text-xs uppercase tracking-wider hover:opacity-95 shadow-md shadow-brand-cyan/20 transition transform active:scale-95">
+                        Free Site Visit
+                    </a>
+                </div>
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.6 8.6 0 1 0 20.2 15.4Z"></path>
+                    </svg>
+                </button>
+                <button id="mobileMenuToggle" class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="mobileNavDrawer" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div id="mobileNavDrawer" class="mobile-nav-drawer" hidden>
+                <nav aria-label="Mobile navigation">
+                    <a href="#hero">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About Us</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#tools"><i class="fa-solid fa-wrench"></i> Client Hub</a>
+                </nav>
+                <div class="mobile-nav-actions">
+                    <a href="tel:0745410748"><i class="fa-solid fa-phone"></i> 0745 410748</a>
+                    <a href="#tools" onclick="setActiveToolTab('quote')">Free Site Visit</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="relative pt-8 pb-16 md:pt-16 md:pb-24 bg-gradient-to-b from-brand-navy via-brand-deep to-brand-navy overflow-hidden">
+            <div class="hero-shell max-w-screen-2xl mx-auto px-4 sm:px-8 xl:px-12">
+                <div class="hero-layout grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16 items-center">
+                    
+                    <!-- Hero Left: Content Intro -->
+                    <div class="hero-intro lg:col-span-6 space-y-6 text-left">
+                        <h1 class="font-extrabold text-white">
+                            <span class="hero-title-line">Poolcare Swimming Pool</span>
+                            <span class="hero-title-line hero-title-accent">Contractors &amp; Engineers</span>
+                            <span class="hero-title-line">in Kenya.</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+                            From custom concrete & fibreglass pool construction to 24/7 emergency filtration repairs and water treatment across Ruiru, Thika Road, Kiambu & Nairobi. Engineered for crystal clarity and lifetime durability.
+                        </p>
+
+                        <!-- Hero Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#tools" onclick="setActiveToolTab('quote')" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-teal text-brand-navy font-bold text-sm tracking-wide shadow-lg shadow-brand-cyan/25 hover:shadow-brand-cyan/40 hover:-translate-y-0.5 transition duration-200">
+                                Request Free Site Visit <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://wa.me/254745410748?text=Hello%20Poolcare%20Contractors,%20I%20would%20like%20to%20inquire%20about%20your%20pool%20services." target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl glass-card border border-emerald-500/30 text-emerald-400 font-semibold text-sm hover:bg-emerald-500/10 hover:border-emerald-500/50 transition duration-200 flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Direct
+                            </a>
+                        </div>
+
+                        <!-- Highlights Pill Row -->
+                        <div class="hero-proof-list" aria-label="Poolcare service guarantees">
+                            <div class="hero-proof-card">
+                                <i class="fa-solid fa-location-dot hero-proof-icon" aria-hidden="true"></i>
+                                <span class="hero-proof-copy"><strong>Ruiru Based</strong><small>Eastern Bypass Hub</small></span>
+                            </div>
+                            <div class="hero-proof-card">
+                                <i class="fa-solid fa-droplet hero-proof-icon" aria-hidden="true"></i>
+                                <span class="hero-proof-copy"><strong>Zero Leakage</strong><small>Waterproof Coating</small></span>
+                            </div>
+                            <div class="hero-proof-card">
+                                <i class="fa-solid fa-circle-check hero-proof-icon" aria-hidden="true"></i>
+                                <span class="hero-proof-copy"><strong>100% Genuine</strong><small>Pumps &amp; Filters</small></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Right: Interactive semicircular orbit carousel -->
+                    <div class="hero-orbit-column lg:col-span-6 lg:pl-4 xl:pl-8">
+                        <div class="orbit-carousel" id="orbitCarousel" aria-label="Poolcare highlights carousel">
+                            <div class="orbit-controls">
+                                <span class="orbit-label"><span class="orbit-live-dot"></span> Why Choose Us</span>
+                                <div class="orbit-nav">
+                                    <button id="prevOrbitBtn" class="orbit-arrow" aria-label="Previous highlight"><i class="fa-solid fa-chevron-up"></i></button>
+                                    <span id="orbitCounter" aria-live="polite">1 / 4</span>
+                                    <button id="nextOrbitBtn" class="orbit-arrow" aria-label="Next highlight"><i class="fa-solid fa-chevron-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="orbit-stage" id="orbitStage">
+                                <div class="orbit-track" aria-hidden="true"></div>
+                                <article class="orbit-card glass-card" data-orbit-card="0" tabindex="0" role="button" aria-label="Main Goal">
+                                    <span class="orbit-icon"><i class="fa-solid fa-bullseye"></i></span>
+                                    <h3>Main Goal</h3>
+                                    <p>Deliver luxury, crystal-clear, leak-free swimming pools and spas for homes, hotels, and schools across Kenya with uncompromised engineering precision.</p>
+                                </article>
+                                <article class="orbit-card glass-card" data-orbit-card="1" tabindex="0" role="button" aria-label="Proven Experience">
+                                    <span class="orbit-icon"><i class="fa-solid fa-award"></i></span>
+                                    <h3>Proven Experience</h3>
+                                    <p>Over 8 years of field excellence in concrete construction, fibreglass installations, and automated chemical dosing across Kiambu and Ruiru.</p>
+                                </article>
+                                <article class="orbit-card glass-card" data-orbit-card="2" tabindex="0" role="button" aria-label="Projects Completed">
+                                    <span class="orbit-icon"><i class="fa-solid fa-person-swimming"></i></span>
+                                    <h3>456+ Projects</h3>
+                                    <p>Residential pools, resort water features, heated lap pools, and restoration projects delivered across Kenya.</p>
+                                </article>
+                                <article class="orbit-card glass-card" data-orbit-card="3" tabindex="0" role="button" aria-label="Why Poolcare">
+                                    <span class="orbit-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                                    <h3>Why Poolcare</h3>
+                                    <p>Rated 5.0★ on Google. We pair local Ruiru service with careful engineering, transparent pricing, written warranties, and rapid maintenance response.</p>
+                                </article>
+                            </div>
+                            <div class="orbit-footer"><span><i class="fa-solid fa-rotate orbit-rotate-icon"></i> Rotates automatically</span><span>Drag or use arrows to explore</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- HERO BOTTOM WAVE DIVIDER (From Sketch: "Moving 2D Waves") -->
+            <div class="mt-12 overflow-hidden leading-none">
+                <svg class="wave-svg animated-wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+                    <g class="wave-layer wave-layer-back">
+                        <path class="wave-fill" fill="url(#waveGradBack)" d="M0,50 C90,50 140,18 290,35 C410,49 470,95 620,80 C760,66 790,22 930,30 C1070,38 1130,101 1270,82 C1350,70 1395,50 1440,50 L1440,160 L0,160 Z M1440,50 C1530,50 1580,18 1730,35 C1850,49 1910,95 2060,80 C2200,66 2230,22 2370,30 C2510,38 2570,101 2710,82 C2790,70 2835,50 2880,50 L2880,160 L1440,160 Z"></path>
+                    </g>
+                    <g class="wave-layer wave-layer-mid">
+                        <path class="wave-fill" fill="url(#waveGradMid)" d="M0,72 C100,72 160,42 300,58 C430,72 500,122 650,104 C790,88 830,42 970,50 C1110,58 1170,124 1300,102 C1360,92 1405,72 1440,72 L1440,160 L0,160 Z M1440,72 C1540,72 1600,42 1740,58 C1870,72 1940,122 2090,104 C2230,88 2270,42 2410,50 C2550,58 2610,124 2740,102 C2800,92 2845,72 2880,72 L2880,160 L1440,160 Z"></path>
+                    </g>
+                    <g class="wave-layer wave-layer-front">
+                        <path class="wave-fill" fill="url(#waveGradFront)" d="M0,96 C100,96 170,70 310,82 C450,94 520,142 680,124 C820,108 860,68 1000,76 C1130,84 1200,140 1320,120 C1370,112 1410,96 1440,96 L1440,160 L0,160 Z M1440,96 C1540,96 1610,70 1750,82 C1890,94 1960,142 2120,124 C2260,108 2300,68 2440,76 C2570,84 2640,140 2760,120 C2810,112 2850,96 2880,96 L2880,160 L1440,160 Z"></path>
+                        <path class="wave-rim" d="M0,96 C100,96 170,70 310,82 C450,94 520,142 680,124 C820,108 860,68 1000,76 C1130,84 1200,140 1320,120 C1370,112 1410,96 1440,96 M1440,96 C1540,96 1610,70 1750,82 C1890,94 1960,142 2120,124 C2260,108 2300,68 2440,76 C2570,84 2640,140 2760,120 C2810,112 2850,96 2880,96"></path>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 2. PROJECTS ACCOMPLISHED SECTION (Wave Conveyor Belt Motion) -->
+        <section id="projects" class="py-12 bg-brand-deep relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-cyan block mb-1">Portfolio & Proof</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Projects Accomplished</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conveyor Viewport -->
+            <div class="conveyor-viewport" id="conveyorViewport">
+                <div class="conveyor-track" id="conveyorTrack">
+                    <!-- Project Cards standard JS rendered -->
+                </div>
+            </div>
+
+            <!-- Wave Divider Bottom -->
+            <div class="mt-8 overflow-hidden leading-none">
+                <svg class="wave-svg animated-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,40 C200,100 450,20 700,80 C950,10 1100,90 1200,30 L1200,120 L0,120 Z" fill="#101422"></path>
+                    <path d="M0,20 C350,90 600,10 850,80 C1050,30 1150,70 1200,50 L1200,120 L0,120 Z" fill="#A8DCE7" opacity="0.2"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 3. SERVICES SECTION (All 25 Exact Services Organized Cleanly) -->
+        <section id="services" class="py-16 bg-brand-navy relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal block mb-1">Our Complete Capabilities</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Swimming Pool & Spa Services</h2>
+                    <p class="text-sm text-slate-300">
+                        Select a category below to filter our full catalog of certified contractor services in Ruiru & Kenya.
+                    </p>
+                </div>
+
+                <!-- Service Category Filters (Pill Tabs so UI remains uncrowded!) -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="serviceFilterPills">
+                    <button onclick="filterServices('all', event)" class="svc-pill active px-4 py-2 rounded-full text-xs font-bold transition bg-brand-cyan text-brand-navy shadow-md">
+                        All Services (25)
+                    </button>
+                    <button onclick="filterServices('construction', event)" class="svc-pill px-4 py-2 rounded-full text-xs font-bold transition bg-white/5 text-slate-300 hover:bg-white/10">
+                        Construction & Design
+                    </button>
+                    <button onclick="filterServices('repairs', event)" class="svc-pill px-4 py-2 rounded-full text-xs font-bold transition bg-white/5 text-slate-300 hover:bg-white/10">
+                        Repairs & Resurfacing
+                    </button>
+                    <button onclick="filterServices('maintenance', event)" class="svc-pill px-4 py-2 rounded-full text-xs font-bold transition bg-white/5 text-slate-300 hover:bg-white/10">
+                        Maintenance & Water Care
+                    </button>
+                    <button onclick="filterServices('spas', event)" class="svc-pill px-4 py-2 rounded-full text-xs font-bold transition bg-white/5 text-slate-300 hover:bg-white/10">
+                        Spas & Water Features
+                    </button>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+                    <!-- Service items injected dynamically from data array -->
+                </div>
+            </div>
+
+            <!-- Wave Divider Bottom -->
+            <div class="mt-16 overflow-hidden leading-none">
+                <svg class="wave-svg animated-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,20 C180,90 420,10 680,70 C920,110 1080,30 1200,60 L1200,120 L0,120 Z" fill="#101422"></path>
+                    <path d="M0,50 C300,10 600,90 900,20 C1100,80 1180,40 1200,30 L1200,120 L0,120 Z" fill="#A8DCE7" opacity="0.2"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 4. ABOUT SECTION (From Wireframe Sketch) -->
+        <section id="about" class="py-16 bg-brand-deep relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-cyan block">Local Authority</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            Based at Eastern Bypass, Ruiru — Serving All of Kenya
+                        </h2>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Poolcare Contractors is a premier registered pool engineering firm located strategically on Eastern Bypass, Ruiru (<span class="font-mono text-brand-teal">Plus Code: RXJ8+WQ</span>). 
+                        </p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Whether you need a new luxury in-ground concrete pool, a quick fibreglass shell installation, emergency pump diagnostics, or routine chemical treatment, our team arrives fully equipped with certified testing instruments and genuine replacement parts.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="glass-card p-4 rounded-xl">
+                                <div class="text-brand-cyan font-bold text-lg mb-1"><i class="fa-regular fa-clock mr-2"></i> Operating Hours</div>
+                                <div class="text-xs text-slate-300">Opens 9:00 AM Fri - Thu<br>24/7 Emergency Pump Service</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl">
+                                <div class="text-brand-teal font-bold text-lg mb-1"><i class="fa-solid fa-location-dot mr-2"></i> Location</div>
+                                <div class="text-xs text-slate-300">Eastern Bypass, Ruiru<br>Plus Code: RXJ8+WQ Ruiru</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="tel:0745410748" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs tracking-wider uppercase transition">
+                                <i class="fa-solid fa-phone text-brand-cyan"></i> Direct Line: 0745 410748
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Google Map Frame -->
+                    <div class="lg:col-span-6">
+                        <div class="glass-card p-3 rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                            <div class="relative w-full h-[340px] rounded-2xl overflow-hidden">
+                                <iframe 
+                                    title="Poolcare contractors Location Map"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.941913988081!2d36.955400!3d-1.166400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMSDCsDEwJzE5LjIiUyAzNsKwNTcnMTkuNCJF!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" 
+                                    class="w-full h-full border-0 filter contrast-105 brightness-95" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                                <div class="absolute bottom-3 left-3 right-3 glass-card p-3 rounded-xl flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-map-pin text-rose-500 text-lg"></i>
+                                        <div>
+                                            <div class="font-bold text-white">Poolcare contractors</div>
+                                            <div class="text-slate-400">Eastern Bypass, Ruiru</div>
+                                        </div>
+                                    </div>
+                                    <a href="https://maps.google.com/?q=Eastern+Bypass+Ruiru+Kenya" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-brand-cyan text-brand-navy font-bold hover:bg-brand-teal transition">
+                                        Open Map
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Wave Divider Bottom -->
+            <div class="mt-16 overflow-hidden leading-none">
+                <svg class="wave-svg animated-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,30 C300,90 500,10 800,80 C1000,20 1150,70 1200,40 L1200,120 L0,120 Z" fill="#061826"></path>
+                    <path d="M0,60 C250,10 550,80 850,20 C1050,70 1150,30 1200,50 L1200,120 L0,120 Z" fill="#00A8E8" opacity="0.25"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 5. REVIEWS SECTION (From Wireframe Sketch) -->
+        <section id="reviews" class="py-16 bg-brand-navy relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs font-bold mb-3">
+                        <i class="fa-solid fa-star"></i> 5.0 Star Rated Business on Google
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">What Clients Say About Us</h2>
+                    <p class="text-sm text-slate-300">Verified testimonials from homeowners, hotel managers, and property developers in Kenya.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="reviewsGrid">
+                    <!-- Dynamic Reviews -->
+                </div>
+                <form id="publicReviewForm" class="review-submit-form glass-card max-w-3xl mx-auto mt-10 p-6 sm:p-8 rounded-2xl" onsubmit="submitPublicReview(event)">
+                    <div class="mb-5">
+                        <h3 class="text-lg font-bold text-white">Share Your Poolcare Experience</h3>
+                        <p class="text-xs text-slate-400 mt-1">Reviews are checked by our team before they appear publicly.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="text-xs font-semibold text-slate-300">Your name
+                            <input name="reviewName" required maxlength="80" class="form-field mt-1" autocomplete="name">
+                        </label>
+                        <label class="text-xs font-semibold text-slate-300">Location
+                            <input name="reviewLocation" required maxlength="120" class="form-field mt-1" placeholder="e.g. Ruiru, Kiambu">
+                        </label>
+                        <label class="text-xs font-semibold text-slate-300">Rating
+                            <select name="reviewRating" required class="form-field mt-1">
+                                <option value="5">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select>
+                        </label>
+                        <label class="text-xs font-semibold text-slate-300 sm:col-span-2">Your review
+                            <textarea name="reviewComment" required maxlength="1200" rows="3" class="form-field mt-1" placeholder="Tell us about your experience..."></textarea>
+                        </label>
+                    </div>
+                    <button type="submit" class="mt-4 px-5 py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-teal text-brand-navy font-bold text-xs uppercase tracking-wide">Submit Review</button>
+                </form>
+            </div>
+
+            <!-- Wave Divider Bottom -->
+            <div class="mt-16 overflow-hidden leading-none">
+                <svg class="wave-svg animated-wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,10 C200,80 450,20 700,90 C950,30 1100,70 1200,20 L1200,120 L0,120 Z" fill="#0B192C"></path>
+                    <path d="M0,40 C300,10 600,90 900,30 C1100,80 1180,40 1200,60 L1200,120 L0,120 Z" fill="#00D4B6" opacity="0.2"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 6. CLIENT HUB & PHASE-2 TOOLS SECTION (Clean Tabbed Container - Zero UI Crowding) -->
+        <section id="tools" class="py-16 bg-brand-deep relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-cyan block mb-1">Interactive Client Portal & Tools</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Estimators, Quote Booking & Store</h2>
+                    <p class="text-sm text-slate-300">
+                        Use our clean interactive tabbed tools to calculate pool costs, request site visits, order chemicals, or preview maintenance billing.
+                    </p>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 border-b border-white/10 pb-4 mb-8" id="toolTabs">
+                    <button onclick="setActiveToolTab('quote')" id="tabBtn-quote" class="tool-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-brand-cyan text-brand-navy shadow-lg">
+                        <i class="fa-solid fa-calendar-check"></i> 1. Free Site Visit & Quote
+                    </button>
+                    <button onclick="setActiveToolTab('estimator')" id="tabBtn-estimator" class="tool-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-slate-300 hover:bg-white/10">
+                        <i class="fa-solid fa-calculator"></i> 2. Pool Cost & Chemical Estimator
+                    </button>
+                    <button onclick="setActiveToolTab('store')" id="tabBtn-store" class="tool-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-slate-300 hover:bg-white/10">
+                        <i class="fa-solid fa-store"></i> 3. Pool Supplies Store
+                    </button>
+                    <button onclick="setActiveToolTab('portal')" id="tabBtn-portal" class="tool-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-slate-300 hover:bg-white/10">
+                        <i class="fa-solid fa-user-gear"></i> 4. Maintenance & Client Portal
+                    </button>
+                    <button onclick="setActiveToolTab('guides')" id="tabBtn-guides" class="tool-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-slate-300 hover:bg-white/10">
+                        <i class="fa-solid fa-book-open"></i> 5. Pool Care Guides
+                    </button>
+                </div>
+
+                <!-- TAB 1: FREE SITE VISIT & QUOTE FORM -->
+                <div id="toolContent-quote" class="tool-content max-w-3xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Schedule Free Site Inspection & Quote</h3>
+                            <p class="text-xs text-slate-400">Our Ruiru team will visit your location to assess soil, hydraulics, and specs.</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">Fast Response</span>
+                    </div>
+
+                    <form id="siteVisitForm" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Full Name *</label>
+                                <input type="text" id="quoteName" required placeholder="e.g. David Kamau" class="w-full px-4 py-3 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-cyan transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone / WhatsApp Number *</label>
+                                <input type="tel" id="quotePhone" required placeholder="e.g. 0745 410748" class="w-full px-4 py-3 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-cyan transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Property Location (Kenya) *</label>
+                                <input type="text" id="quoteLocation" required placeholder="e.g. Ruiru, Eastern Bypass, Membley, Runda" class="w-full px-4 py-3 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-cyan transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Service Needed *</label>
+                                <select id="quoteService" class="w-full px-4 py-3 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-cyan transition">
+                                    <!-- Populated dynamically with 25 services -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details / Message</label>
+                            <textarea id="quoteMessage" rows="3" placeholder="Tell us pool dimensions, current condition, or special requirements..." class="w-full px-4 py-3 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-cyan transition"></textarea>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <p class="text-xs text-slate-400">
+                                <i class="fa-brands fa-whatsapp text-brand-teal mr-1"></i> Your request opens in WhatsApp for you to review and send.
+                            </p>
+                            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-teal text-brand-navy font-extrabold text-sm uppercase tracking-wider hover:opacity-95 shadow-lg shadow-brand-cyan/20 transition">
+                                Submit Request <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TAB 2: INTERACTIVE POOL COST & CHEMICAL ESTIMATOR -->
+                <div id="toolContent-estimator" class="tool-content hidden max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Construction Cost Estimator -->
+                        <div class="space-y-4 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+                            <div class="flex items-center gap-2 text-brand-cyan font-bold text-lg">
+                                <i class="fa-solid fa-calculator"></i> Pool Construction Cost Estimator (KES)
+                            </div>
+                            <p class="text-xs text-slate-400">Get an instant estimated budget range based on pool dimensions and material choice in Kenya.</p>
+                            
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Pool Build Type</label>
+                                <select id="estBuildType" onchange="calculateConstructionCost()" class="w-full px-3 py-2.5 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                                    <option value="120000">Concrete In-Ground Pool (High Durability)</option>
+                                    <option value="90000">Fibreglass Prefabricated Pool (Fast Install)</option>
+                                    <option value="65000">Above-Ground Steel Frame Pool</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2">
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-slate-300 mb-1">Length (m)</label>
+                                    <input type="number" id="estLength" value="10" min="4" max="25" oninput="calculateConstructionCost()" class="w-full px-3 py-2 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-slate-300 mb-1">Width (m)</label>
+                                    <input type="number" id="estWidth" value="5" min="2" max="15" oninput="calculateConstructionCost()" class="w-full px-3 py-2 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-slate-300 mb-1">Avg Depth (m)</label>
+                                    <input type="number" id="estDepth" value="1.5" step="0.1" min="1" max="3" oninput="calculateConstructionCost()" class="w-full px-3 py-2 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                <label class="flex items-center gap-2 text-slate-300">
+                                    <input id="estIncludeTiling" type="checkbox" onchange="calculateConstructionCost()">
+                                    Include tiling add-on
+                                </label>
+                                <label class="flex items-center gap-2 text-slate-300">
+                                    <input id="estIncludeFiltration" type="checkbox" onchange="calculateConstructionCost()">
+                                    Include filtration add-on
+                                </label>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-brand-navy/90 border border-brand-cyan/30 text-center">
+                                <span class="text-xs text-slate-400 block mb-1">Estimated Project Budget</span>
+                                <div id="estCostDisplay" class="text-2xl font-extrabold text-brand-cyan">KES 1,800,000 - 2,200,000</div>
+                                <span class="text-[10px] text-slate-400 block mt-1">*Includes excavation, steel reinforcement, tiling, pump system & initial water treatment.</span>
+                            </div>
+                        </div>
+
+                        <!-- Chemical Dosing Estimator -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2 text-brand-teal font-bold text-lg">
+                                <i class="fa-solid fa-flask-vial"></i> Pool Chemical Dosing Calculator
+                            </div>
+                            <p class="text-xs text-slate-400">Calculate weekly chemical amounts for crystal-clear green-free pool water.</p>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Pool Volume (Liters)</label>
+                                <input type="number" id="chemVolume" value="75000" step="5000" oninput="calculateChemicalDose()" class="w-full px-3 py-2.5 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Current Water Status</label>
+                                <select id="chemStatus" onchange="calculateChemicalDose()" class="w-full px-3 py-2.5 rounded-xl bg-brand-navy/80 border border-white/10 text-white text-xs">
+                                    <option value="maintenance">Routine Weekly Maintenance</option>
+                                    <option value="cloudy">Cloudy / Slightly Hazy Water</option>
+                                    <option value="green">Green Algae Shock Treatment</option>
+                                </select>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-brand-navy/90 border border-brand-teal/30 space-y-2">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-slate-300">Dry Chlorine 90%:</span>
+                                    <strong id="doseChlorine" class="text-brand-teal font-mono">1.12 kg</strong>
+                                </div>
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-slate-300">pH Reducer (Dry Acid):</span>
+                                    <strong id="dosePh" class="text-brand-teal font-mono">0.75 kg</strong>
+                                </div>
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-slate-300">Copper Algaecide:</span>
+                                    <strong id="doseAlgaecide" class="text-brand-teal font-mono">0.38 Liters</strong>
+                                </div>
+                                <div class="flex justify-between text-xs border-t border-white/10 pt-2">
+                                    <span class="text-slate-300">Estimated chemical cost:</span>
+                                    <strong id="doseCost" class="text-brand-teal font-mono">KES 0</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: POOL SUPPLIES E-COMMERCE STORE -->
+                <div id="toolContent-store" class="tool-content hidden glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Genuine Pool Equipment & Chemicals Store</h3>
+                            <p class="text-xs text-slate-400">Request delivery across Ruiru, Kiambu & Nairobi. Orders are confirmed via WhatsApp.</p>
+                        </div>
+                        <button onclick="toggleCartDrawer()" class="px-4 py-2 rounded-xl bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan font-bold text-xs flex items-center gap-2 hover:bg-brand-cyan hover:text-brand-navy transition">
+                            <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cartCount">0</span> items)
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+                        <!-- Dynamic Products -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: MAINTENANCE PLANS & CLIENT PORTAL PREVIEW -->
+                <div id="toolContent-portal" class="tool-content hidden max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold text-white mb-1">Monthly Maintenance Packages & Client Portal</h3>
+                        <p class="text-xs text-slate-400">Hassle-free recurring pool care with live water chemistry logging & online M-Pesa billing.</p>
+                    </div>
+
+                    <!-- Plans Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10" id="maintenancePlansGrid"></div>
+
+                    <!-- Client Portal Interactive Demo Box -->
+                    <div class="p-6 rounded-2xl bg-brand-navy border border-white/10">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-teal/20 text-brand-teal flex items-center justify-center font-bold text-xs">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Interactive Client Portal Preview</div>
+                                    <div class="text-[10px] text-slate-400">Account: Residential Villa #402, Ruiru Bypass</div>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">Active Contract</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-4">
+                            <div class="p-3 rounded-xl bg-white/5">
+                                <span class="text-[10px] text-slate-400 block">Last pH Reading</span>
+                                <strong class="text-emerald-400 text-base">7.4 (Ideal)</strong>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/5">
+                                <span class="text-[10px] text-slate-400 block">Free Chlorine</span>
+                                <strong class="text-brand-cyan text-base">2.5 PPM</strong>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/5">
+                                <span class="text-[10px] text-slate-400 block">Next Technician Visit</span>
+                                <strong class="text-white text-base">This Friday 10 AM</strong>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/5">
+                                <span class="text-[10px] text-slate-400 block">M-Pesa Invoice</span>
+                                <strong class="text-emerald-400 text-base">Paid (INV-9821)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: POOL CARE GUIDES (BLOG) -->
+                <div id="toolContent-guides" class="tool-content hidden max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Pool Care Guides & Local Insights</h3>
+                        <p class="text-xs text-slate-400">Expert articles tailored for Kenyan climate, rainfall patterns, and pool maintenance in Kiambu/Nairobi.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="guidesGrid">
+                        <!-- Dynamic Guides -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER SECTION -->
+        <footer class="bg-brand-navy border-t border-white/10 pt-12 pb-24 md:pb-12 text-slate-400 text-xs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-white font-bold text-base">
+                        <div class="w-8 h-8 rounded-lg bg-brand-cyan text-brand-navy flex items-center justify-center">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <span data-brand-name>Poolcare</span> <span data-brand-subtitle>Contractors</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Registered swimming pool contractors in Eastern Bypass, Ruiru, Kenya. Concrete & fibreglass construction, tile repair, resurfacing & water care.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-sm">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="hover:text-brand-cyan transition">Home</a></li>
+                        <li><a href="#projects" class="hover:text-brand-cyan transition">Projects Portfolio</a></li>
+                        <li><a href="#services" class="hover:text-brand-cyan transition">25 Contractor Services</a></li>
+                        <li><a href="#about" class="hover:text-brand-cyan transition">Eastern Bypass Hub</a></li>
+                        <li><a href="#tools" class="hover:text-brand-cyan transition">Client Hub & Estimator</a></li>
+                        <li><a href="admin.html" class="hover:text-brand-cyan transition">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-sm">Service Areas</h4>
+                    <ul class="space-y-2">
+                        <li>Ruiru & Eastern Bypass</li>
+                        <li>Thika Road & Membley</li>
+                        <li>Kiambu Town & Kamiti</li>
+                        <li>Nairobi (Runda, Muthaiga, Karen)</li>
+                        <li>Machakos & Naivasha Resorts</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-sm">Direct Contact</h4>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-cyan"></i> Eastern Bypass, Ruiru, Kenya
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-map text-brand-teal"></i> Plus Code: RXJ8+WQ Ruiru
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-400"></i> <a href="tel:0745410748" class="text-white font-bold hover:underline">0745 410748</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-amber-400"></i> Opens 9:00 AM
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+                <p>© <span id="yearSpan"></span> Poolcare contractors. All rights reserved.</p>
+                <p class="font-mono text-[11px] text-slate-400">MongoDB API & Cloudinary Media Ready Architecture</p>
+            </div>
+        </footer>
+
+    </div>
+    <!-- END MAIN SITE CONTAINER -->
+
+    <!-- DEDICATED MOBILE PROJECT DETAIL PAGE (Shown on Mobile when #project/:id is active) -->
+    <div id="mobileProjectPage" class="hidden min-h-screen bg-brand-navy p-4 pb-20">
+        <!-- Sticky Mobile Header -->
+        <div class="sticky top-0 z-50 bg-brand-navy/95 backdrop-blur-md py-3 px-2 border-b border-white/10 flex items-center justify-between mb-4">
+            <button onclick="closeMobileProjectView()" class="px-3 py-1.5 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center gap-2 hover:bg-white/20 transition">
+                <i class="fa-solid fa-arrow-left"></i> Back to Projects
+            </button>
+            <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Project Details</span>
+        </div>
+
+        <div id="mobileProjectContent" class="space-y-4">
+            <!-- Dynamic Mobile Page View Rendered Here -->
+        </div>
+    </div>
+
+    <!-- DESKTOP PC FLOATING MODAL WINDOW FOR PROJECTS -->
+    <div id="desktopProjectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-3xl w-full rounded-3xl border border-white/10 overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="desktopModalCard">
+            <div class="relative h-64 sm:h-80 bg-slate-800 overflow-hidden">
+                <img id="pcModalImg" src="" alt="Project Image" class="w-full h-full object-cover">
+                <video id="pcModalVideo" class="hidden w-full h-full object-cover" controls playsinline></video>
+                <button onclick="closeDesktopModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-brand-cyan hover:text-brand-navy transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                    <span id="pcModalCategory" class="px-3 py-1 rounded-full bg-brand-cyan/90 text-brand-navy text-xs font-extrabold uppercase"></span>
+                    <span id="pcModalLocation" class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-semibold"></span>
+                </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <h3 id="pcModalTitle" class="text-2xl font-extrabold text-white"></h3>
+                <p id="pcModalDesc" class="text-sm text-slate-300 leading-relaxed"></p>
+
+                <div class="grid grid-cols-3 gap-3 p-3 rounded-xl bg-white/5 text-xs">
+                    <div><span class="text-slate-400 block">Pool Type:</span> <strong id="pcModalType" class="text-white"></strong></div>
+                    <div><span class="text-slate-400 block">Completion:</span> <strong id="pcModalTime" class="text-white"></strong></div>
+                    <div><span class="text-slate-400 block">Warranty:</span> <strong id="pcModalWarranty" class="text-white">10 Years</strong></div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                    <a id="pcModalWaqLink" href="#" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-teal text-brand-navy font-bold text-xs uppercase tracking-wider hover:opacity-90 transition">
+                        Request Similar Pool Design <i class="fa-brands fa-whatsapp ml-1"></i>
+                    </a>
+                    <button onclick="closeDesktopModal()" class="px-4 py-3 text-xs text-slate-400 hover:text-white transition">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GUIDE READER MODAL -->
+    <div id="guideModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-2xl w-full rounded-3xl border border-white/10 p-6 sm:p-8 max-h-[85vh] overflow-y-auto relative">
+            <button onclick="closeGuideModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-brand-cyan hover:text-brand-navy transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="guideModalContent"></div>
+        </div>
+    </div>
+
+    <!-- CART SLIDE-OVER DRAWER -->
+    <div id="cartDrawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-brand-navy border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-5 border-b border-white/10 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping text-brand-cyan"></i> Shopping Cart
+            </h3>
+            <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+
+        <div class="p-5 flex-1 overflow-y-auto space-y-4" id="cartItemsList">
+            <!-- Cart Items -->
+        </div>
+
+        <div class="p-5 border-t border-white/10 space-y-3 bg-brand-deep">
+            <div class="flex justify-between text-sm font-bold text-white">
+                <span>Total Amount:</span>
+                <span id="cartTotalDisplay" class="text-brand-cyan font-mono">KES 0</span>
+            </div>
+            <button onclick="checkoutCartViaWhatsApp()" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Checkout Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- FLOATING DIRECT ACTION BUTTONS (BOTTOM RIGHT) -->
+    <div class="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
+        <a href="https://wa.me/254745410748?text=Hello%20Poolcare%20Contractors,%20I%20am%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition-transform glow-pulse" title="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:0745410748" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-brand-cyan text-brand-navy flex items-center justify-center text-xl shadow-xl hover:scale-110 transition-transform" title="Call Now">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed top-24 right-5 z-50 transform translate-x-96 transition-transform duration-300 glass-card px-4 py-3 rounded-xl border border-brand-cyan/40 text-xs font-semibold text-white flex items-center gap-3 shadow-2xl">
+        <i class="fa-solid fa-circle-check text-brand-teal text-base" id="toastIcon"></i>
+        <span id="toastMsg">Action completed!</span>
+    </div>
+
+    <div id="themeWashFallback" class="theme-wash-fallback" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="none" focusable="false">
+            <path class="wash-wave wash-wave-back" d="M-100 490 C120 430 240 550 460 490 S800 430 1020 490 S1360 550 1540 490"></path>
+            <path class="wash-wave wash-wave-mid" d="M-100 510 C120 570 240 450 460 510 S800 570 1020 510 S1360 450 1540 510"></path>
+            <path class="wash-wave wash-wave-front" d="M-100 530 C120 470 240 590 460 530 S800 470 1020 530 S1360 590 1540 530"></path>
+        </svg>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
